@@ -17,7 +17,7 @@ test('renders event details correctly', () => {
   render(<Event event={mockEvent} selectedEvents={mockSelectedEvents} onActionButtonClick={jest.fn()} />);
 
   expect(screen.getByText(mockEvent.event_name)).toBeInTheDocument();
-  expect(screen.getByText(mockEvent.event_category)).toBeInTheDocument();
+  expect(screen.getByText("Category: "+mockEvent.event_category)).toBeInTheDocument();
 });
 
 test('disables button when event is selected', () => {

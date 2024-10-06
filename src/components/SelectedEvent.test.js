@@ -15,7 +15,7 @@ test('renders event details correctly', () => {
   render(<SelectedEvent event={mockEvent} onActionButtonClick={jest.fn()} />);
 
   expect(screen.getByText(mockEvent.event_name)).toBeInTheDocument();
-  expect(screen.getByText(mockEvent.event_category)).toBeInTheDocument();
+  expect(screen.getByText("Category: "+mockEvent.event_category)).toBeInTheDocument();
 });
 
 

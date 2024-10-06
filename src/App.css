@@ -1,37 +1,73 @@
 .App {
-display: flex;
-  justify-content: auto;
+  display: flex;
+  justify-content: center;
+
 }
+
+body {
+  background-color: black;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
 .cards {
   display: grid;
-  grid-template-columns: 250px 250px;
-  background-color: #2196F3;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 20px;
+}
+
+.selected-events-cards {
   padding: 10px;
   margin: 10px;
-
-
 }
+
+.btn-container {
+  display: flex;
+  justify-content: end;
+}
+
+button {
+  padding: 8px 12px;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .select-button {
-    background: lightgreen;
+  background: lightgreen;
 }
 
 .disabled-select-button {
-    background: lightgrey;
+  background: lightgrey;
 }
 
 .deselect-button {
-background: lightpink;
+  background: lightpink;
 }
 
+.disabled {
+  background-color: grey !important;
+}
 
+.events-list {
+  background-color: darkslategrey;
+  border-radius: 6px;
+  color: white;
+  padding: 30px;
+  margin: 30px;
+
+}
 
 .event-card {
-    background-color: white;
-    display: inline-grid;
-    border: 1px solid #ccc;
-      padding: 10px;
-      margin: 10px;
-      height: 200px;
-      width: 200px;
-      border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 210px;
+  height: 200px;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px;
 }

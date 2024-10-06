@@ -7,6 +7,20 @@ export function convertTime(isoTime) {
     return `${formattedHours}:${minutes} ${period}`;
 }
 
+export function getDate(isoTime) {
+    const date = new Date(isoTime);
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+
+    ];
+
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
+
+    return `${monthNames[monthIndex]} ${day}, ${year}`;
+}
 export function doTimeRangesOverlap(startTime1, endTime1, startTime2, endTime2) {
     // Convert times to milliseconds for easier comparison
     const startTime1Ms = new Date(startTime1).getTime();
