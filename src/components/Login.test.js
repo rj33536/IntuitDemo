@@ -51,9 +51,9 @@ describe('Login component', () => {
     });
 
     test('calls tryLogin on Login button click', async () => {
+        const mockTryRegister = jest.fn();
         const mockTryLogin = jest.fn();
-        const mockUpdateUser = jest.fn();
-        render(<LoginRegister updateUser={mockUpdateUser} tryLogin={mockTryLogin} />);
+        render(<LoginRegister onLogin={mockTryLogin} onRegister={mockTryRegister} />);
 
         const inputField = screen.getByRole('input');
         fireEvent.change(inputField, { target: { value: 'longusername' } });
@@ -62,25 +62,25 @@ describe('Login component', () => {
         fireEvent.click(loginButton);
 
         await waitFor(() => {
-            expect(mockUpdateUser).toHaveBeenCalledWith('longusername');
-          });
+            expect(mockTryLogin).toHaveBeenCalledWith('longusername');
+        });
     });
 
     test('calls tryRegister on Register button click', async () => {
         const mockTryRegister = jest.fn();
         const mockUpdateUser = jest.fn();
-        render(<LoginRegister updateUser={mockUpdateUser} />);
+        render(<LoginRegister onLogin={mockUpdateUser} onRegister={mockTryRegister} />);
 
         const inputField = screen.getByRole('input');
-        
+
         fireEvent.change(inputField, { target: { value: 'longusername' } });
 
         const registerButton = screen.getByRole('button', { name: "Register" });
         fireEvent.click(registerButton);
 
         await waitFor(() => {
-            expect(mockUpdateUser).toHaveBeenCalledWith('longusername');
-          });
+            expect(mockTryRegister).toHaveBeenCalledWith('longusername');
+        });
     });
 
 });

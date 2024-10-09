@@ -1,11 +1,13 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { fetchEvents } from './services/EventService';
+import { updateEvents, login } from './services/UserService';
 import { doTimeRangesOverlap, localSavedEvents, localSavedUser } from './common/utils';
 import App from './App';
 
 // Mock functions for services and utilities
 jest.mock('./services/EventService');
+jest.mock('./services/UserService');
 jest.mock('./common/utils');
 const mockEvents = [
     { id: 1, "event_name": "100m Race", "event_category": "Track", start_time: '2022-12-22 10:00:00', end_time: '2022-12-22 11:00:00' },
@@ -33,6 +35,9 @@ describe('App component', () => {
         fetchEvents.mockResolvedValue(mockEvents);
         localSavedUser.mockImplementation(() => "testuser");
         localSavedEvents.mockImplementation(() => []);
+        updateEvents.mockResolvedValue();
+        login.mockResolvedValue({ username: "testuser", events: "[]" })
+
         jest.spyOn(window, 'alert').mockImplementation(() => { });
 
         // Mock doTimeRangesOverlap function
