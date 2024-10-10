@@ -1,8 +1,9 @@
+import React from "react";
 import { convertTime, getDate } from "../common/utils";
 
-export default function Event(props) {
-    const isDisabled = props.selectedEvents.findIndex(selectedEvent => selectedEvent.id === props.event.id) !== -1;
-
+export default React.memo(function Event(props) {
+    const isDisabled = props.isDisabled;
+    console.log("rendered")
     return (
         <div data-testid="event" className={`event-card ${isDisabled ? "disabled" : ""}`}>
             <h3>{props.event.event_name}</h3>
@@ -14,4 +15,4 @@ export default function Event(props) {
             </div>
         </div>
     );
-}
+});
